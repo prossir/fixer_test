@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fixer Test</string>
+
+    <string name="error_no_internet_connection_title">You are not connected to the internet</string>
+    <string name="error_no_internet_connection_description">It seems your are not connected to the internet</string>
+    <string name="error_ups">Ups!</string>
+    <string name="error_server_request_error_description">There was a problem with the server</string>
+    <string name="error_an_error_occurred">An error occurred</string>
+
+
+</resources>
