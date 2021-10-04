@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="paolo.rossi.currency_exchange.features.views.CurrencyExchangeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/sw_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:focusable="false"
+            android:textSize="12sp"
+            android:visibility="@{(viewModel.isLoading || viewModel.isError)? View.GONE : View.VISIBLE }"
+            app:defaultQueryHint="@string/action_search"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryTextListener="@{viewModel.onQueryTextChange}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_currencies"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:visibility="@{(viewModel.isLoading || viewModel.isError)? View.GONE : View.VISIBLE }"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sw_filter"
+            tools:listitem="@layout/item_currency" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lav_loader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loader" />
+
+        <ImageView
+            android:id="@+id/iv_reload"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:contentDescription="@string/s_accesability_content_description_tap_to_reload"
+            android:onClick="@{_ -> viewModel.fetchLiveFilterableCurrencies()}"
+            android:src="@drawable/ic_cached_crimson"
+            android:visibility="@{viewModel.isError ? View.VISIBLE : View.GONE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_reload_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/s_reload_explanation_error"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="@{viewModel.isError ? View.VISIBLE : View.GONE }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_reload" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

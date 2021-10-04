@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_search">Filter</string>
+    <string name="s_reload_explanation_error">An error has occurred. Click the icon to reload.</string>
+    <string name="s_accesability_content_description_tap_to_reload">Tab this icon to reload</string>
+</resources>
