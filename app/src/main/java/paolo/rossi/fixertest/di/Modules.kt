@@ -7,7 +7,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import paolo.rossi.core.di.coreModules
 import paolo.rossi.core.extensions.listByElementsOf
-import paolo.rossi.currency_exchange.di.currencyExchangeModules
+import paolo.rossi.currency_exchange.dependencies.di.currencyExchangeModules
 
 
 internal fun injectAppModules(app: Application) {

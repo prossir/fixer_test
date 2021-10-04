@@ -41,5 +41,5 @@ android {
 
 dependencies {
     implementation project(':libraries:core')
-    testImplementation project(':libraries:core')
+    testImplementation project(path: ':libraries:core', configuration: 'testDependencies')
 }

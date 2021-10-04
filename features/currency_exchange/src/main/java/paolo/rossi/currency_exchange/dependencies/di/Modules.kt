@@ -1,4 +1,4 @@
-package paolo.rossi.currency_exchange.di
+package paolo.rossi.currency_exchange.dependencies.di
 
 import org.koin.core.module.Module
 import paolo.rossi.core.extensions.listByElementsOf
