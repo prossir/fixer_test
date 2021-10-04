@@ -1,4 +1,4 @@
-package paolo.rossi.core.db.model
+package paolo.rossi.core.db.dto
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

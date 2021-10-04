@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
-import org.koin.core.KoinComponent
-import paolo.rossi.core.db.model.CurrencyEntity
+import org.koin.core.component.KoinComponent
+import paolo.rossi.core.db.dto.CurrencyEntity
 
 
 @Dao

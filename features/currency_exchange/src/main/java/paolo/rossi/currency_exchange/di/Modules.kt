@@ -9,8 +9,8 @@ import paolo.rossi.currency_exchange.features.di.featuresModules
 
 val currencyExchangeModules by lazy {
     listByElementsOf<Module>(
-        featuresModules,
+        dataModules,
         domainModules,
-        dataModules
+        featuresModules
     )
 }

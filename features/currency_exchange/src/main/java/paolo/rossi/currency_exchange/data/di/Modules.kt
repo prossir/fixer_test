@@ -8,6 +8,8 @@ import paolo.rossi.currency_exchange.data.data_source.remote.CurrencyRemoteDataS
 import paolo.rossi.currency_exchange.data.data_source.remote.api.di.networkModule
 import paolo.rossi.currency_exchange.data.mapper.CurrencyLocalMapper
 import paolo.rossi.currency_exchange.data.mapper.CurrencyRemoteMapper
+import paolo.rossi.currency_exchange.data.mapper.ExchangeRateLocalMapper
+import paolo.rossi.currency_exchange.data.mapper.ExchangeRateRemoteMapper
 import paolo.rossi.currency_exchange.data.repository.CurrencyDataRepository
 import paolo.rossi.currency_exchange.domain.repository.CurrencyRepository
 
@@ -29,8 +31,11 @@ internal val currencyExchangeDataModule = module {
     factory { CurrencyLocalMapper() }
     factory { CurrencyRemoteMapper() }
 
+    factory { ExchangeRateLocalMapper() }
+    factory { ExchangeRateRemoteMapper() }
+
     single { CurrencyLocalDataSource(get()) }
     single { CurrencyRemoteDataSource(get()) }
 
-    single<CurrencyRepository> { CurrencyDataRepository(get(), get(), get(), get()) }
+    single<CurrencyRepository> { CurrencyDataRepository(get(), get(), get(), get(), get(), get()) }
 }

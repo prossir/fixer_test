@@ -1,6 +1,6 @@
 package paolo.rossi.currency_exchange.data.mapper
 
-import paolo.rossi.core.db.model.CurrencyEntity
+import paolo.rossi.core.db.dto.CurrencyEntity
 import paolo.rossi.core.mapper.SingleMapper
 import paolo.rossi.currency_exchange.domain.entity.Currency
 

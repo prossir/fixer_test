@@ -8,7 +8,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Fixer Test"
 include ':app'
-include ':features'
 include ':libraries'
 include ':libraries:core'
+include ':features'
 include ':features:currency_exchange'

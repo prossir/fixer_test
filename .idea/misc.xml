@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Diago/Desktop/Project/Android/FixerTest/features/currency_exchange/src/main/res/layout/activity_currency_exchange.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/Diago/Desktop/Project/Android/FixerTest/features/currency_exchange/src/main/res/layout/fragment_convert_currency.xml" value="0.14447463768115942" />
         <entry key="..\:/Users/Diago/Desktop/Project/Android/FixerTest/features/currency_exchange/src/main/res/layout/fragment_list_currencies.xml" value="0.264" />
         <entry key="..\:/Users/Diago/Desktop/Project/Android/FixerTest/features/currency_exchange/src/main/res/layout/item_currency.xml" value="0.264" />
+        <entry key="..\:/Users/Diago/Desktop/Project/Android/FixerTest/features/currency_exchange/src/main/res/layout/item_exchanged_currency.xml" value="0.2" />
+        <entry key="..\:/Users/Diago/Desktop/Project/Android/FixerTest/libraries/core/src/main/res/drawable/ic_cached_crimson.xml" value="0.19537037037037036" />
       </map>
     </option>
   </component>

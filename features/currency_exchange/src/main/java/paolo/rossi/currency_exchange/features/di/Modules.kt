@@ -6,6 +6,7 @@ import org.koin.dsl.module
 import paolo.rossi.core.extensions.listByElementsOf
 import paolo.rossi.currency_exchange.features.mapper.CurrencyExchangeFailureMapper
 import paolo.rossi.currency_exchange.features.mapper.CurrencyMapper
+import paolo.rossi.currency_exchange.features.mapper.ExchangeRateMapper
 import paolo.rossi.currency_exchange.features.views.CurrencyExchangeViewModel
 
 
@@ -19,7 +20,8 @@ internal val currencyExchangeFeatureModule = module {
 
     factory { CurrencyExchangeFailureMapper() }
     factory { CurrencyMapper() }
+    factory { ExchangeRateMapper() }
 
-    viewModel { CurrencyExchangeViewModel(get(), get(), get()) }
+    viewModel { CurrencyExchangeViewModel(get(), get(), get(), get(), get()) }
 
 }

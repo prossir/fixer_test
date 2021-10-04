@@ -8,7 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.navigation.findNavController
+import com.google.android.material.snackbar.Snackbar
 import paolo.rossi.currency_exchange.R
 import paolo.rossi.currency_exchange.databinding.FragmentListCurrenciesBinding
 import paolo.rossi.currency_exchange.features.dto.CurrencyModel
@@ -18,14 +19,16 @@ import paolo.rossi.currency_exchange.features.views.CurrencyExchangeViewState
 
 class ListCurrenciesFragment : Fragment(), CurrenciesAdapter.OnCurrencyItemClicked {
 
-    private val viewModel: CurrencyExchangeViewModel by viewModel()
+    private val viewModel: CurrencyExchangeViewModel by activityViewModels()
     private val viewStateObserver = Observer<CurrencyExchangeViewState> { state ->
         when (state) {
             is CurrencyExchangeViewState.AfterCurrenciesAreLoaded -> onCurrenciesLoaded()
-            is CurrencyExchangeViewState.OnError -> onError()
+            is CurrencyExchangeViewState.AfterExchangeRatesAreLoaded -> onExchangeRatesLoaded()
+            is CurrencyExchangeViewState.OnError -> onError(state.errorMessage)
             else -> { /* Do nothing */ }
         }
     }
+
     private var binding: FragmentListCurrenciesBinding? = null
     private var adapter: CurrenciesAdapter? = null
 
@@ -45,8 +48,9 @@ class ListCurrenciesFragment : Fragment(), CurrenciesAdapter.OnCurrencyItemClick
     }
 
     private fun initUi() {
-        binding?.viewModel = viewModel
         adapter = CurrenciesAdapter(this)
+        binding?.viewModel = viewModel
+        binding?.rvCurrencies?.adapter = adapter
         viewModel.fetchLiveFilterableCurrencies()
     }
 
@@ -56,12 +60,18 @@ class ListCurrenciesFragment : Fragment(), CurrenciesAdapter.OnCurrencyItemClick
         })
     }
 
-    private fun onError() {
-
+    override fun onCurrencySelected(currency: CurrencyModel) {
+        viewModel.fetchLiveExchangeRates(currency.abbreviation)
     }
 
-    override fun onCurrencySelected(currency: CurrencyModel) {
+    private fun onExchangeRatesLoaded() {
+        view?.findNavController()?.navigate(ListCurrenciesFragmentDirections.actionListCurrencyFragmentToConvertCurrencyFragment())
+    }
 
+    private fun onError(errorMessage: String) {
+        activity?.let {
+            Snackbar.make(it.findViewById(android.R.id.content), errorMessage, Snackbar.LENGTH_LONG).show()
+        }
     }
 
 }
